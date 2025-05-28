@@ -1,0 +1,145 @@
+
+    .navbar-border {
+        background: linear-gradient(270deg, #8e2de2, #4a00e0, #00c6ff, #8e2de2);
+        background-size: 800% 800%;
+        animation: gradientAnimation 10s ease infinite;
+        padding: 3px; /* Border thickness */
+        /* border-radius: 14px; */
+    }
+
+    .navbar-border .navbar {
+        background-color: #212529; /* Dark inner navbar */
+        /* border-radius: 12px;  */
+    }
+
+    /* Keyframes for moving gradient */
+    @keyframes gradientAnimation {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+    #theme-toggle {
+        position: relative;
+        background: transparent; /* Make button itself transparent */
+        padding: 2px; /* Thin padding for border thickness */
+        border-radius: 12px;
+        overflow: hidden;
+        transition: box-shadow 0.3s ease;
+        border: none;
+    }
+
+    #theme-toggle::before {
+        content: "";
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: linear-gradient(270deg, #8e2de2, #4a00e0, #00c6ff, #8e2de2);
+        background-size: 800% 800%;
+        animation: gradientAnimation 8s ease infinite;
+        z-index: 1;
+        border-radius: 12px;
+        padding: 2px;
+        box-sizing: border-box;
+    }
+
+    #theme-toggle .content {
+        position: relative;
+        z-index: 2;
+        background-color: #0a0a23; /* Dark inner background */
+        border-radius: 10px;
+        padding: 8px 10px;
+        color: white;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Moving colorful animation */
+    @keyframes gradientAnimation {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    /* Glow on hover */
+    #theme-toggle:hover::before {
+        filter: brightness(1.3);
+        box-shadow: 0 0 10px 4px rgba(142, 45, 226, 0.6),
+                    0 0 20px 6px rgba(0, 198, 255, 0.4);
+    }
+
+    .footer-border {
+        background: linear-gradient(270deg, #8e2de2, #4a00e0, #00c6ff, #8e2de2);
+        background-size: 800% 800%;
+        animation: gradientAnimation 10s ease infinite;
+        padding: 3px; /* Border thickness */
+        overflow: hidden;
+    }
+
+    .footer-border .footer {
+        background-color: #212529; /* Dark inner footer */
+        padding: 20px;
+    }
+
+    @keyframes gradientAnimation {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    .animated-gradient-text {
+        /* font-size: 1.5rem; */
+        /* font-weight: bold; */
+        color: white; /* Text color remains white */
+        position: relative; /* Ensure we can position pseudo-elements */
+        display: inline-block; /* Ensure the text stays on a single line */
+        background: linear-gradient(270deg, #8e2de2, #4a00e0, #00c6ff, #8e2de2); /* Gradient colors */
+        background-size: 800% 800%; /* Stretch the gradient for smooth animation */
+        animation: gradientTextAnimation 10s ease infinite; /* Animation to move the gradient */
+        -webkit-background-clip: text; /* Clip the background to the text */
+        background-clip: text; /* Clip the background to the text */
+        color: transparent; /* Make text transparent so that gradient can show through */
+    }
+    
+    /* Keyframes for moving the gradient */
+    @keyframes gradientTextAnimation {
+        0% {
+            background-position: 0% 50%; /* Start with gradient on the left */
+        }
+        50% {
+            background-position: 100% 50%; /* Move the gradient to the right */
+        }
+        100% {
+            background-position: 0% 50%; /* Move the gradient back to the left */
+        }
+    }
+    
+    .gradient-border-wrapper {
+        background: linear-gradient(270deg, #8e2de2, #4a00e0, #00c6ff, #8e2de2);
+        background-size: 800% 800%;
+        animation: borderGradient 10s ease infinite;
+        padding: 3px; /* Controls thickness of border */
+        border-radius: 1rem;
+    }
+    
+    @keyframes borderGradient {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+    
+    .form-wrapper {
+        background: white;
+        border-radius: 1rem;
+    }
+    
+    
+    
+    
+    

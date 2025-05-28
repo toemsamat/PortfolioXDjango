@@ -1,0 +1,16 @@
+.form-wrapper {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.contact-btn {
+    background-color: #11332d;
+    color: white;
+}
+
+.skill-block .skill-name,
+.skill-block .skill-percent,
+.skill-block .skill-level {
+    color: #212529; /* Bootstrap's default dark text */
+}
+

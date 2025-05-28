@@ -1,0 +1,208 @@
+{% extends 'base.html' %}
+
+<!-- Font Awesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-p3F4pZ+lMtWx28Th9x4CgZmEfEjSmx96w++Yk0P1gZSpM92iKh1uTzFbbD4gNvVmSTyc2iCqzYAZ2F5Zb2pW4A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+{% block title %}About Me • DevFolio{% endblock %}
+
+{% block content %}
+<div class="row align-items-center mb-5" data-aos="fade-right">
+
+    <div class="col-md-4 text-center">
+        <img src="{{ profile.profile_picture.url }}" class="rounded-circle shadow" width="350" alt="Profile Picture">
+    </div>
+    <div class="col-md-8">
+        <h2>{{ profile.name }}</h2>
+        <h5 class="text-muted fs-4">{{ profile.headline }}</h5>
+        <p class="lead fw-normal">{{ profile.bio }}</p>
+            <ul class="list-unstyled fs-5">
+                <li><strong>Email:</strong> {{ profile.email }}</li>
+                {% if profile.phone %}<li><strong>Phone:</strong> {{ profile.phone }}</li>{% endif %}
+                {% if profile.location %}<li><strong>Location:</strong> {{ profile.location }}</li>{% endif %}
+            </ul>
+        <div class="mt-3 d-flex flex-wrap gap-2">
+            {% if profile.github %}
+            <a href="{{ profile.github }}" 
+                class="btn btn-dark btn-sm rounded-circle d-inline-flex align-items-center justify-content-center me-2" 
+                style="width: 45px; height: 45px; background-color: {{ profile.github_color }};" 
+                target="_blank">
+                <i class="{{ profile.github_icon }}  fs-3"></i>
+            </a>
+
+            {% endif %}
+            
+            {% if profile.linkedin %}
+            <a href="{{ profile.github }}" 
+                class="btn btn-dark btn-sm rounded-circle d-inline-flex align-items-center justify-content-center me-2" 
+                style="width: 45px; height: 45px; background-color: {{ profile.linkedin_color }};" 
+                target="_blank">
+                <i class="{{ profile.linkedin_icon }}  fs-3"></i>
+            </a>
+            {% comment %} <a href="{{ profile.linkedin }}" class="btn btn-sm text-white" style="background-color: {{ profile.linkedin_color }};" target="_blank">
+                <i class="{{ profile.linkedin_icon }} me-1"></i> LinkedIn
+            </a> {% endcomment %}
+            {% endif %}
+            
+            {% if profile.twitter %}
+            <a href="{{ profile.github }}" 
+                class="btn btn-dark btn-sm rounded-circle d-inline-flex align-items-center justify-content-center me-2" 
+                style="width: 45px; height: 45px; background-color: {{ profile.twitter_color }};" 
+                target="_blank">
+                <i class="{{ profile.twitter_icon }}  fs-3"></i>
+            </a>
+            {% comment %} <a href="{{ profile.twitter }}" class="btn btn-sm text-white" style="background-color: {{ profile.twitter_color }};" target="_blank">
+                <i class="{{ profile.twitter_icon }} me-1"></i> Twitter
+            </a> {% endcomment %}
+            {% endif %}
+            
+            {% if profile.instagram %}
+            <a href="{{ profile.github }}" 
+                class="btn btn-dark btn-sm rounded-circle d-inline-flex align-items-center justify-content-center me-2" 
+                style="width: 45px; height: 45px; background-color: {{ profile.instagram_color }};   background: #833ab4;background: linear-gradient(to right,#833ab4,#fd1d1d,#fcb045);" 
+                target="_blank">
+                <i class="{{ profile.instagram_icon }}  fs-3"></i>
+            </a>
+            {% comment %} <a href="{{ profile.instagram }}" class="btn btn-sm text-white" style="background-color: {{ profile.instagram_color }};" target="_blank">
+                <i class="{{ profile.instagram_icon }} me-1"></i> Instagram
+            </a> {% endcomment %}
+            {% endif %}
+            
+            {% if profile.facebook %}
+            <a href="{{ profile.github }}" 
+                class="btn btn-dark btn-sm rounded-circle d-inline-flex align-items-center justify-content-center me-2" 
+                style="width: 45px; height: 45px; background-color: {{ profile.facebook_color }};" 
+                target="_blank">
+                <i class="{{ profile.facebook_icon }}  fs-3"></i>
+            </a>
+            {% comment %} <a href="{{ profile.facebook }}" class="btn btn-sm text-white" style="background-color: {{ profile.facebook_color }};" target="_blank">
+                <i class="{{ profile.facebook_icon }} me-1"></i> Facebook
+            </a> {% endcomment %}
+            {% endif %}
+        </div>
+
+    </div>
+</div>
+
+<hr>
+
+<!-- Skills Section -->
+<section data-aos="fade-up">
+    <h3 class="mb-4">Skills</h3>
+    <div class="container">
+
+        <!-- 1 Row with 3 Columns for Frontend, Backend, Other -->
+        <div class="row">
+            <!-- Frontend Skills Column -->
+            <div class="col-md-4 mb-4">
+                <h4 class="mb-3">Frontend</h4>
+                <div class="row">
+                    {% for skill in frontend_skills %}
+                    <div class="col-12 mb-4">
+                        <div class="d-flex align-items-center p-3 skill-box shadow-lg rounded w-100">
+                            {% if skill.icon_class %}
+                                <i class="{{ skill.icon_class }} fa-2x me-3" style="color: {{ skill.icon_color }};"></i>
+                            {% else %}
+                                <i class="fas fa-tools fa-2x me-3 text-secondary"></i>
+                            {% endif %}
+                            <div class="w-100">
+                                <div class="d-flex justify-content-between">
+                                    <strong>{{ skill.name }}</strong>
+                                    <span>{{ skill.percentage }}%</span>
+                                </div>
+                                <div class="progress mt-1" style="height: 6px;">
+                                    <div class="progress-bar bg-primary" role="progressbar"
+                                         style="width: {{ skill.percentage }}%;"
+                                         aria-valuenow="{{ skill.percentage }}"
+                                         aria-valuemin="0" aria-valuemax="100">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Backend Skills Column -->
+            <div class="col-md-4 mb-4">
+                <h4 class="mb-3">Backend</h4>
+                <div class="row">
+                    {% for skill in backend_skills %}
+                    <div class="col-12 mb-4">
+                        <div class="d-flex align-items-center p-3 skill-box shadow-lg rounded w-100">
+                            {% if skill.icon_class %}
+                                <i class="{{ skill.icon_class }} fa-2x me-3" style="color: {{ skill.icon_color }};"></i>
+                            {% else %}
+                                <i class="fas fa-tools fa-2x me-3 text-secondary"></i>
+                            {% endif %}
+                            <div class="w-100">
+                                <div class="d-flex justify-content-between">
+                                    <strong>{{ skill.name }}</strong>
+                                    <span>{{ skill.percentage }}%</span>
+                                </div>
+                                <div class="progress mt-1" style="height: 6px;">
+                                    <div class="progress-bar bg-primary" role="progressbar"
+                                         style="width: {{ skill.percentage }}%;"
+                                         aria-valuenow="{{ skill.percentage }}"
+                                         aria-valuemin="0" aria-valuemax="100">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Other Skills Column -->
+            <div class="col-md-4 mb-4">
+                <h4 class="mb-3">Other</h4>
+                <div class="row">
+                    {% for skill in other_skills %}
+                    <div class="col-12 mb-4">
+                        <div class="d-flex align-items-center p-3 skill-box shadow-lg rounded w-100">
+                            {% if skill.icon_class %}
+                                <i class="{{ skill.icon_class }} fa-2x me-3" style="color: {{ skill.icon_color }};"></i>
+                            {% else %}
+                                <i class="fas fa-tools fa-2x me-3 text-secondary"></i>
+                            {% endif %}
+                            <div class="w-100">
+                                <div class="d-flex justify-content-between">
+                                    <strong>{{ skill.name }}</strong>
+                                    <span>{{ skill.percentage }}%</span>
+                                </div>
+                                <div class="progress mt-1" style="height: 6px;">
+                                    <div class="progress-bar bg-primary" role="progressbar"
+                                         style="width: {{ skill.percentage }}%;"
+                                         aria-valuenow="{{ skill.percentage }}"
+                                         aria-valuemin="0" aria-valuemax="100">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<hr>
+
+<!-- Experience -->
+<section data-aos="fade-up">
+    <h3 class="mb-4">Experience</h3>
+    {% for exp in experiences %}
+    <div class="mb-4">
+        <h5 class="mb-1">{{ exp.role }} @ {{ exp.company }}</h5>
+        <p class="text-muted">{{ exp.start_date|date:"M Y" }} – {% if exp.end_date %}{{ exp.end_date|date:"M Y" }}{% else %}Present{% endif %}</p>
+        <p>{{ exp.description }}</p>
+    </div>
+    {% empty %}
+    <p>No experience listed yet.</p>
+    {% endfor %}
+</section>
+{% endblock %}

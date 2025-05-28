@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %} <!-- Add this line to load the static tag -->
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=YOUR_TRACKING_ID"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'YOUR_TRACKING_ID');
+</script>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}DevFolio{% endblock %}</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- AOS (Scroll Animations) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Custom -->
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+
+    <!-- Default (Light) CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    
+    <!-- Dark Mode CSS (toggle by script) -->
+    <link rel="stylesheet" href="{% static 'css/dark.css' %}" id="dark-style" disabled>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    {% comment %} <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="/">Toem Samat</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/about/">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/projects/">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/resume/">Resume</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/blog/">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/contact/">Contact</a></li>
+                </ul>
+            </div>
+            <button class="btn btn-outline-light ms-2" id="theme-toggle">
+                <i class="fas fa-moon"></i> Toggle Theme
+            </button>
+        </div>
+    </nav> {% endcomment %}
+
+    <div class="navbar-border">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+            <div class="container">
+                <a class="navbar-brand" href="/">Toem Samat</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse animated-gradient-text" id="navbarNav">
+                    <ul class="navbar-nav ms-auto ">
+                        <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/about/">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/projects/">Projects</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/certificates">Certificates</a> </li>
+                        <li class="nav-item"><a class="nav-link" href="/resume/">Resume</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/blog/">Blog</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/contact/">Contact</a></li>
+                    </ul>
+                </div>
+                {% comment %} <button class="btn btn-outline-light ms-2" id="theme-toggle">
+                    <i class="fas fa-moon"></i> Toggle Theme
+                </button> {% endcomment %}
+                <button id="theme-toggle" class="ms-2">
+                    <div class="content">
+                        <i class="fas fa-moon"></i> Toggle Theme
+                    </div>
+                </button>
+            </div>
+        </nav>
+    </div>
+
+
+    <!-- Main Content -->
+    <div class="container py-4">
+        {% block content %}{% endblock %}
+    </div>
+
+    <!-- Footer -->
+    {% comment %} <footer class="bg-dark text-white text-center py-4 mt-5">
+        <div class="container">
+            <p class="mb-0">© 2025 Toem Samat • All rights reserved.</p>
+        </div>
+    </footer>  {% endcomment %}
+    {% comment %} <footer class="footer-border">
+        <div class="footer bg-dark text-white text-center ">
+            <div class="container">
+                <p class="mb-0">© 2025 Toem Samat • All rights reserved.</p>
+            </div>
+        </div>
+    </footer> {% endcomment %}
+    <footer class="footer-border">
+        <div class="footer text-center">
+            <div class="container">
+                <p class="mb-0 animated-gradient-text">© 2025 Toem Samat • All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+
+    <!-- Theme Toggle Script -->
+    <script>
+        const toggleBtn = document.getElementById('theme-toggle');
+        const darkStyle = document.getElementById('dark-style');
+
+        // Load saved theme preference
+        if (localStorage.getItem('theme') === 'dark') {
+            darkStyle.removeAttribute('disabled');
+        }
+
+        toggleBtn.addEventListener('click', () => {
+            const isDark = !darkStyle.disabled;
+            if (isDark) {
+                darkStyle.setAttribute('disabled', true);
+                localStorage.setItem('theme', 'light');
+            } else {
+                darkStyle.removeAttribute('disabled');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Blog • DevFolio{% endblock %}
+
+{% block content %}
+<h2 class="text-center mb-4 " data-aos="fade-up">Blog</h2>
+
+<div class="h-75">
+<div class="list-group ">
+    {% for post in posts %}
+    <a href="{% url 'blog_detail' post.slug %}" class="list-group-item list-group-item-action">
+        <h5>{{ post.title }}</h5>
+        <small class="text-muted">{{ post.created_at|date:"F j, Y" }}</small>
+        <p>{{ post.content|truncatewords:20 }}</p>
+    </a>
+    {% empty %}
+    <p>No blog posts yet.</p>
+    {% endfor %}
+</div>
+</div>
+{% endblock %}

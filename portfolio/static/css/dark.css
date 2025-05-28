@@ -1,0 +1,113 @@
+/* Dark Theme Overrides */
+body {
+    background-color: #121212 !important;
+    color: #f1f1f1 !important;
+}
+
+.navbar,
+.footer,
+.bg-dark {
+    background-color: #1f1f1f !important;
+}
+
+.navbar .nav-link,
+.footer,
+.text-dark,
+.navbar-brand {
+    color: #f1f1f1 !important;
+}
+
+.navbar .nav-link:hover {
+    color: #00adb5 !important;
+}
+
+.btn-outline-light,
+.btn-outline-dark {
+    border-color: #f1f1f1;
+    color: #f1f1f1;
+}
+
+.btn-outline-light:hover,
+.btn-outline-dark:hover {
+    background-color: #00adb5;
+    color: #fff;
+    border-color: #00adb5;
+}
+
+.card {
+    background-color: #1f1f1f;
+    color: #f1f1f1;
+    border-color: #333;
+}
+
+a {
+    color: #00adb5;
+}
+
+a:hover {
+    color: #00ffc8;
+}
+
+/* Optional: Form Styling */
+input,
+textarea,
+select {
+    background-color: #2a2a2a;
+    color: #ffffff;
+    border: 1px solid #555;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #bbbbbb;
+}
+
+.form-wrapper {
+    background-color: #1f1f1f;
+    color: #f1f1f1;
+}
+
+.form-wrapper .form-label {
+    color: #f1f1f1;
+}
+
+.form-wrapper input,
+.form-wrapper textarea {
+    background-color: #2b2b2b;
+    color: #ffffff;
+    border: 1px solid #555;
+}
+
+.form-wrapper input::placeholder,
+.form-wrapper textarea::placeholder {
+    color: #bbbbbb;
+}
+
+.contact-btn {
+    background-color: #00adb5 !important;
+    color: white !important;
+    border: none;
+}
+
+.contact-btn:hover {
+    background-color: #00ffc8 !important;
+    color: #000 !important;
+}
+
+.skill-block .skill-name,
+.skill-block .skill-percent,
+.skill-block .skill-level {
+    color: #f1f1f1;
+}
+
+.skill-block .text-muted {
+    color: #bbb !important; /* override Bootstrap's default muted text */
+}
+
+.progress {
+    background-color: #3a3a3a;
+}
+
+.progress-bar.bg-primary {
+    background-color: #00adb5 !important; /* or any color that pops in dark mode */
+}

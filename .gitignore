@@ -1,0 +1,36 @@
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+# Compiled Python files
+migrations/
+
+# Environment variables files
+.env
+*.env
+
+# Local Django settings
+settings_local.py
+
+# Database file for local SQLite (if used)
+db.sqlite3
+
+# Media files (user uploads)
+media/
+
+# Static files collected (optional, if you collect static locally)
+staticfiles/
+
+# VSCode and IDE files
+.vscode/
+.idea/
+*.iml
+
+# macOS system files
+.DS_Store
+
+# Node.js modules (if used for frontend assets)
+node_modules/
+
+fixtures/
+#json files

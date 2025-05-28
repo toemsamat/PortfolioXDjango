@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Resume • DevFolio{% endblock %}
+
+{% block content %}
+<div class="text-center mb-4" data-aos="fade-up">
+    <h2>My Resume</h2>
+    {% if profile.resume %}
+        <a href="{{ profile.resume.url }}" class="btn btn-primary" download>Download Resume</a>
+
+        <hr>
+
+        <!-- Optional Embed (only if resume is uploaded) -->
+        <div data-aos="fade-up">
+            <h3 class="text-center mb-4">Resume Preview</h3>
+            <iframe src="{{ profile.resume.url }}" style="width:100%; height:auto;" frameborder="0"></iframe>
+            <p class="text-center mt-2">If the preview doesn't load, you can download the resume using the button above.</p>
+        </div>
+    {% else %}
+        <p>No resume uploaded yet.</p>
+    {% endif %}
+</div>
+{% endblock %}

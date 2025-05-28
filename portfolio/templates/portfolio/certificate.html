@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Certificates • DevFolio{% endblock %}
+
+{% block content %}
+<h2 class="text-center mb-4" data-aos="fade-up">Certificates</h2>
+
+<div class="row">
+    {% for cert in certificates %}
+        <div class="col-md-6 col-lg-4 mb-4" data-aos="zoom-in" data-aos-delay="{{ forloop.counter0|add:1 }}00">
+            <div class="card h-100 shadow-sm">
+                {% if cert.image %}
+                    <img src="{{ cert.image.url }}" class="card-img-top" alt="{{ cert.title }}">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ cert.title }}</h5>
+                    <p class="card-text">{{ cert.description }}</p>
+                    {% if cert.image %}
+                        <a href="{{ cert.image.url }}" target="_blank" class="btn btn-sm btn-dark">View Certificate</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {% empty %}
+        <p>No certificates available.</p>
+    {% endfor %}
+</div>
+{% endblock %}
